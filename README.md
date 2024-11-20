@@ -1,50 +1,105 @@
-# React + TypeScript + Vite
+## Description
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[Next.js 14+](https://nextjs.org/) framework TypeScript starter project
 
-Currently, two official plugins are available:
+## Philosophy
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Nothing is hidden from you, so you have the freedom to make the necessary adjustments to fit your needs and preferences.
+- Dependencies are updated regularly
+- Easy to customize
+- Minimal code
+- ☕ SEO-friendly
+- 🚀 Production-ready
 
-## Expanding the ESLint configuration
+## Requirements
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Node.js 20+ and npm
 
-- Configure the top-level `parserOptions` property like this:
+## Project setup
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+$ npm install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Compile and run the project
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```bash
+# development
+$ npm run start
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+# watch mode
+$ npm run dev
+
+# build
+$ npm run build
 ```
+
+## Integration & E2E Testing
+
+The project uses Playwright for Integration and E2E testing. You can run the tests with:
+
+```bash
+npx playwright install # Only for the first time in a new environment
+npm run playwright
+```
+
+## Format code
+
+```bash
+# prettier
+$ npm run prettier:fix
+
+# eslint
+$ npm run lint:fix
+```
+
+## GitHub Actions CI Pipeline
+
+The GitHub Actions configuration is located in the /.github/workflows directory. 
+The CI pipeline is set up to run various tasks including linting, testing, and building the project. 
+These automated workflows ensure that the codebase maintains quality standards and
+that the project is correctly built and tested on every push or pull request to the specified branches
+
+## Project structure
+
+```bash
+.
+├── README.md                       # README file
+├── .env.local                      # Environment variables
+├── .gitignore                      # GitHub ignore
+├── .prettierignore                 # Prettier ignore
+├── .prettierrc                     # Prettier config
+├── .stylelintrc.json               # Stylelint config
+├── .next.config.js                 # Next config
+├── .playwright.config.js           # Playwright config
+├── eslint.config.js                # ESLint config
+├── .github                         
+│   ├── workflows                   # GitHub Actions CI Pipeline config
+├── public                          # Public assets folder
+├── src
+│   ├── app                         # Next JS App (App Router)
+│   ├── components                  # React components
+│   ├── hooks                       # React hooks
+│   ├── shared                      # Common components
+│   ├── store                       # State manager
+│   ├── styles                      # Styles folder
+│   ├── types                       # Type definitions
+│   ├── utils                       # Utilities folder
+├── tests
+│   ├── e2e                         # E2E tests, also includes Monitoring as Code
+└── tsconfig.json                   # TypeScript configuration
+```
+
+## Support
+
+Next is an MIT-licensed open source project
+
+## Stay in touch
+
+- Author - Volodymyr Dehtiarev
+- Email - [degtyarevvladimirr@gmail.com](mailto:degtyarevvladimirr@gmail.com)
+- LinkedIn - [LinkedIn profile](https://www.linkedin.com/in/volodymyr-dehtiarev/)
+
+## License
+
+Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE)
