@@ -1,0 +1,11 @@
+.container {
+    @include flex-center-column;
+
+    min-height: 100vh;
+    min-width: 100vw;
+    padding: 16px;
+
+    &_text {
+        @include urbanist-500-size-24;
+    }
+}
