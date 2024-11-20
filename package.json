@@ -16,9 +16,12 @@
     "playwright-ui": "npx playwright test --ui"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.9.1",
     "next": "14.2.7",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-hook-form": "^7.53.2",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.46.1",
