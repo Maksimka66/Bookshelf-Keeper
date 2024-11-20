@@ -1,10 +1,12 @@
+import { UseFormRegisterReturn } from 'react-hook-form';
+
 export type InputProps = {
     type: string;
     placeholder: string;
     label: string;
     name: string;
     error?: string;
-    register: any;
+    register: UseFormRegisterReturn;
 };
 
 export const Input = (props: InputProps) => {
@@ -15,6 +17,5 @@ export const Input = (props: InputProps) => {
             <input id={name} type={type} placeholder={placeholder} {...register(name)} />
             {error && <span>{error}</span>}
         </>
-
     );
 };
