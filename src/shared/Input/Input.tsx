@@ -1,12 +1,13 @@
-import { UseFormRegisterReturn } from 'react-hook-form';
+import { UseFormRegister } from 'react-hook-form';
+import { SignUpFormType } from '@/components/SignUpForm/SignUpForm';
 
 export type InputProps = {
     type: string;
     placeholder: string;
     label: string;
-    name: string;
+    name: keyof SignUpFormType;
     error?: string;
-    register: UseFormRegisterReturn;
+    register: UseFormRegister<SignUpFormType>;
 };
 
 export const Input = (props: InputProps) => {
