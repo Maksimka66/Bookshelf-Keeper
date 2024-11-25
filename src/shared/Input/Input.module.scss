@@ -1,0 +1,36 @@
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.inputLabel {
+    @include font-montserrat;
+
+    text-align: left;
+    color: $background-color;
+    margin-bottom: 8px;
+}
+
+// .inputLabel[for='name'],
+// .inputLabel[for='email'] {
+//     max-width: 54px;
+// }
+
+.labelTest {
+    display: inline;
+}
+
+.inputLabel::after {
+    content: ' *';
+    color: #f25137;
+    font-family: Roboto;
+}
+
+.inputField {
+    padding: 12px 8px 13px;
+    box-shadow: inset 0px 1px 2px 0px rgba(29, 29, 27, 0.15);
+    background: $background-color;
+    border: none;
+    margin-bottom: 20px;
+}
