@@ -33,7 +33,7 @@ export const SignInForm = () => {
                     type='email'
                     placeholder='Enter email'
                     label='Email'
-                    id='email'
+                    name='email'
                     register={register('email')}
                     error={errors.email?.message}
                 />
@@ -41,7 +41,7 @@ export const SignInForm = () => {
                     type='password'
                     placeholder='Enter password'
                     label='Password'
-                    id='password'
+                    name='password'
                     register={register('password')}
                     error={errors.password?.message}
                 />

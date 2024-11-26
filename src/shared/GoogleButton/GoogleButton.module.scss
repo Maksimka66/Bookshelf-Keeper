@@ -1,19 +1,21 @@
 .googleButton {
-    position: relative;
+  min-width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 16px;
+  margin: 0 auto 28px;
+  padding-left: 14px;
+
+  background-color: $second-background-color;
+
+  &_text {
     font-family: Roboto, sans-serif;
-    margin: 0 auto;
-    margin-bottom: 28px;
-    padding: 0 50px;
-    color: rgb(112, 115, 117);
+    color: $font-secondary-color;
     font-size: 16px;
     font-weight: 700;
     line-height: 38px;
     text-align: center;
-    background-color: $second-background-color;
+  }
 }
 
-.googleIcon {
-    position: absolute;
-    top: 11px;
-    left: 14px;
-}

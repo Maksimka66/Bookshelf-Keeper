@@ -1,16 +1,16 @@
-import { UseFormRegister } from 'react-hook-form';
-import { SignUpFormType } from '@/components/SignUpForm/SignUpForm';
-import { SignInFormType } from '@/components/SignInForm/SignInForm';
+import { UseFormRegisterReturn } from 'react-hook-form';
+import { InputHTMLAttributes } from 'react';
+
 import styles from './Input.module.scss';
 
-export type InputProps = {
-    type: string;
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+    type: 'text' | 'password' | 'email';
     placeholder: string;
     label: string;
-    name: keyof SignInFormType | keyof SignUpFormType;
+    id: string;
     error?: string;
-    register: UseFormRegister<SignUpFormType>;
-};
+    register: UseFormRegisterReturn;
+}
 
 export const Input = (props: InputProps) => {
     const { type, placeholder, label, name, error, register } = props;
@@ -24,7 +24,7 @@ export const Input = (props: InputProps) => {
                 id={name}
                 type={type}
                 placeholder={placeholder}
-                {...register(name)}
+                {...register}
             />
             {error && <span> {error} </span>}
         </>

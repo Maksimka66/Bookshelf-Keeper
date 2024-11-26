@@ -1,4 +1,3 @@
-import { MainHeader } from '@/shared/Logo/Logo';
 import cls from './page.module.scss';
 
 export default function HomePage() {

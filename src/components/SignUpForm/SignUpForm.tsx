@@ -36,31 +36,31 @@ export const SignUpForm = () => {
                     placeholder='Enter name'
                     label='Name'
                     error={errors.name?.message}
-                    register={register}
-                    name='name'
+                    register={register('name')}
+                    id='name'
                 />
                 <Input
                     type='email'
                     placeholder='Enter email'
                     label='Email'
-                    name='email'
-                    register={register}
+                    id='email'
+                    register={register('email')}
                     error={errors.email?.message}
                 />
                 <Input
                     type='password'
                     placeholder='Enter password'
                     label='Password'
-                    name='password'
-                    register={register}
+                    id='password'
+                    register={register('password')}
                     error={errors.password?.message}
                 />
                 <Input
                     type='password'
                     placeholder='Confirm password'
                     label='Confirm password'
-                    name='confirmPassword'
-                    register={register}
+                    id='confirmPassword'
+                    register={register('confirmPassword')}
                     error={errors.password?.message}
                 />
                 <button className={styles.signUpSubmitButton} type='submit'>
