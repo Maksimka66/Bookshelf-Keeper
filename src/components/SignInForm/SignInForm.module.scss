@@ -1,4 +1,4 @@
-.signUpContainer {
+.signInContainer {
     width: 100%;
     padding: 32px 20px;
     display: flex;
@@ -10,13 +10,14 @@
         url('/img/hero.png') center / cover no-repeat;
 }
 
-.signUpForm {
+.signInForm {
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
+    width: 280px;
 }
 
-.signUpSubmitButton {
+.signInSubmitButton {
     font-family: Montserrat, sans-serif;
     background-color: $authButton-color;
     padding: 20px 70px;
@@ -28,27 +29,18 @@
     border: none;
 }
 
-.loginNav {
+.registrationNav {
     display: flex;
-    gap: 4px;
     justify-content: center;
     align-items: center;
 }
 
-.loginNavText {
-    font-family: Montserrat, sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 16px;
-    text-align: center;
-    color: #898f9f;
-}
-
-.loginNavLink {
+.registrationNavLink {
     font-family: Montserrat, sans-serif;
     font-size: 13px;
     font-weight: 500;
     line-height: 16px;
     text-align: center;
     color: #ff6b08;
+    text-decoration: underline;
 }

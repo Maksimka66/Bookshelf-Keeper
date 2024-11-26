@@ -1,5 +1,7 @@
+import '@/styles/globals.scss';
+
 import { ReactNode } from 'react';
-import { montserrat } from '@/styles/fonts';
+import { abrilFatface, montserrat } from '@/styles/fonts';
 import cls from './layout.module.scss';
 
 export const metadata = {
@@ -16,7 +18,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <link rel='icon' type='image/svg+xml' href='/vercel.svg' />
                 <link rel='apple-touch-icon' href='/vercel.svg' type='image/svg+xml' />
             </head>
-            <body className={`${montserrat.className} ${cls.container}`}>{children}</body>
+            <body className={`${montserrat.className} ${abrilFatface.className} ${cls.container}`}>
+                {children}
+            </body>
         </html>
     );
 }
