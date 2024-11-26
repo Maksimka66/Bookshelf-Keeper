@@ -1,0 +1,48 @@
+.containerFirstPage {
+    padding: 48px 0;
+    margin: 0 auto;
+    position: relative;
+}
+
+.textFirstPage {
+    font-family: Montserrat, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 16px;
+    color: #242a37;
+    padding-bottom: 16px;
+    text-align: center;
+    width: 216px;
+    margin: 0 auto;
+}
+
+.containerFirstPage::after {
+    content: '“';
+    top: 4px;
+    left: 98px;
+    position: absolute;
+    color: #ff6b08;
+    font-family: $font-abril_fatface;
+    font-size: 59px;
+    font-weight: 400;
+    line-height: 80px;
+    text-align: center;
+}
+
+.line {
+    width: 100px;
+    border: none;
+    height: 1px;
+    background-color: rgba(36, 42, 55, 0.5);
+    margin: 0 auto;
+}
+
+.nameFirstPage {
+    margin-top: 12px;
+    color: rgb(137, 143, 159);
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    text-align: center;
+}

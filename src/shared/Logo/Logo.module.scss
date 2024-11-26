@@ -1,0 +1,14 @@
+.logo {
+    @include flex-center;
+    padding: 16px 0;
+
+    &_text {
+        font-family: $font-abril_fatface, serif;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 27px;
+        text-align: left;
+        color: #242a37;
+        text-transform: uppercase;
+    }
+}
