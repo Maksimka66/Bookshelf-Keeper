@@ -1,7 +1,10 @@
 .signUpContainer {
-    width: 320px;
+    width: 100%;
     padding: 32px 20px;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background:
         linear-gradient(rgba(9, 30, 63, 0.8), rgba(9, 30, 63, 0.8)),
         url('/img/hero.png') center / cover no-repeat;
@@ -9,19 +12,19 @@
 
 .signUpForm {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     margin-bottom: 20px;
 }
 
 .signUpSubmitButton {
     font-family: Montserrat, sans-serif;
-    background-color: #FF6B08;
+    background-color: $authButton-color;
     padding: 20px 70px;
     color: rgb(255, 255, 255);
     font-size: 16px;
     font-weight: 600;
     line-height: 20px;
-    text-align: center; 
+    text-align: center;
     border: none;
 }
 
@@ -38,7 +41,7 @@
     font-weight: 500;
     line-height: 16px;
     text-align: center;
-    color: #898F9F;
+    color: #898f9f;
 }
 
 .loginNavLink {
@@ -47,5 +50,5 @@
     font-weight: 500;
     line-height: 16px;
     text-align: center;
-    color: #FF6B08;    
+    color: #ff6b08;
 }

@@ -16,8 +16,8 @@ export const Input = (props: InputProps) => {
     const { type, placeholder, label, name, error, register } = props;
     return (
         <>
-            <label className={styles.labelTest} htmlFor={name}>
-                <p className={styles.inputLabel}>{label}</p>
+            <label className={styles.inputLabel} htmlFor={name}>
+                {label}
             </label>
             <input
                 className={styles.inputField}

@@ -8,7 +8,7 @@ export const montserrat = Montserrat({
 });
 
 export const roboto = Roboto({
-    weight: ['400'],
+    weight: ['400', '700'],
     style: 'normal',
     subsets: ['latin'],
     variable: '--font-roboto'

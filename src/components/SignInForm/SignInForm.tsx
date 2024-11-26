@@ -49,9 +49,11 @@ export const SignInForm = () => {
                     Login
                 </button>
             </form>
-            <Link className={styles.registrationNavLink} href='/signup'>
-                Register
-            </Link>
+            <div className={styles.registrationNav}>
+                <Link className={styles.registrationNavLink} href='/signup'>
+                    Register
+                </Link>
+            </div>
         </div>
     );
 };
