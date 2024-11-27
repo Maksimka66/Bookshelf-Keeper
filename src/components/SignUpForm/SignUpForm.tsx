@@ -29,49 +29,51 @@ export const SignUpForm = () => {
 
     return (
         <div className={styles.signUpContainer}>
-            <GoogleButton />
-            <form className={styles.signUpForm} onSubmit={handleSubmit(onSubmit)}>
-                <Input
-                    type='text'
-                    placeholder='Enter name'
-                    label='Name'
-                    error={errors.name?.message}
-                    register={register('name')}
-                    id='name'
-                />
-                <Input
-                    type='email'
-                    placeholder='Enter email'
-                    label='Email'
-                    id='email'
-                    register={register('email')}
-                    error={errors.email?.message}
-                />
-                <Input
-                    type='password'
-                    placeholder='Enter password'
-                    label='Password'
-                    id='password'
-                    register={register('password')}
-                    error={errors.password?.message}
-                />
-                <Input
-                    type='password'
-                    placeholder='Confirm password'
-                    label='Confirm password'
-                    id='confirmPassword'
-                    register={register('confirmPassword')}
-                    error={errors.password?.message}
-                />
-                <button className={styles.signUpSubmitButton} type='submit'>
-                    Register
-                </button>
-            </form>
-            <div className={styles.loginNav}>
-                <p className={styles.loginNavText}>Already have an account?</p>
-                <Link className={styles.loginNavLink} href='/signin'>
-                    Log in
-                </Link>
+            <div className={styles.secondSignUpContainer}>
+                <GoogleButton />
+                <form className={styles.signUpForm} onSubmit={handleSubmit(onSubmit)}>
+                    <Input
+                        type='text'
+                        placeholder='Enter name'
+                        label='Name'
+                        error={errors.name?.message}
+                        register={register('name')}
+                        id='name'
+                    />
+                    <Input
+                        type='email'
+                        placeholder='your@email.com'
+                        label='Email'
+                        id='email'
+                        register={register('email')}
+                        error={errors.email?.message}
+                    />
+                    <Input
+                        type='password'
+                        placeholder='Enter password'
+                        label='Password'
+                        id='password'
+                        register={register('password')}
+                        error={errors.password?.message}
+                    />
+                    <Input
+                        type='password'
+                        placeholder='Confirm password'
+                        label='Confirm password'
+                        id='confirmPassword'
+                        register={register('confirmPassword')}
+                        error={errors.password?.message}
+                    />
+                    <button className={styles.signUpSubmitButton} type='submit'>
+                        Register
+                    </button>
+                </form>
+                <div className={styles.loginNav}>
+                    <p className={styles.loginNavText}>Already have an account?</p>
+                    <Link className={styles.loginNavLink} href='/signin'>
+                        Log in
+                    </Link>
+                </div>
             </div>
         </div>
     );

@@ -27,32 +27,34 @@ export const SignInForm = () => {
 
     return (
         <div className={styles.signInContainer}>
-            <GoogleButton />
-            <form className={styles.signInForm} onSubmit={handleSubmit(onSubmit)}>
-                <Input
-                    type='email'
-                    placeholder='Enter email'
-                    label='Email'
-                    id='email'
-                    register={register('email')}
-                    error={errors.email?.message}
-                />
-                <Input
-                    type='password'
-                    placeholder='Enter password'
-                    label='Password'
-                    id='password'
-                    register={register('password')}
-                    error={errors.password?.message}
-                />
-                <button className={styles.signInSubmitButton} type='submit'>
-                    Login
-                </button>
-            </form>
-            <div className={styles.registrationNav}>
-                <Link className={styles.registrationNavLink} href='/signup'>
-                    Register
-                </Link>
+            <div className={styles.secondSignInContainer}>
+                <GoogleButton />
+                <form className={styles.signInForm} onSubmit={handleSubmit(onSubmit)}>
+                    <Input
+                        type='email'
+                        placeholder='your@email.com'
+                        label='Email'
+                        id='email'
+                        register={register('email')}
+                        error={errors.email?.message}
+                    />
+                    <Input
+                        type='password'
+                        placeholder='Password'
+                        label='Password'
+                        id='password'
+                        register={register('password')}
+                        error={errors.password?.message}
+                    />
+                    <button className={styles.signInSubmitButton} type='submit'>
+                        Login
+                    </button>
+                </form>
+                <div className={styles.registrationNav}>
+                    <Link className={styles.registrationNavLink} href='/signup'>
+                        Register
+                    </Link>
+                </div>
             </div>
         </div>
     );

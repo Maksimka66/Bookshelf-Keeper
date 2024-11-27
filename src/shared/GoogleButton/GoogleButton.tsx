@@ -1,5 +1,5 @@
-import styles from './GoogleButton.module.scss';
 import { IconGoogle } from '@/shared/Svg/IconGoogle';
+import styles from './GoogleButton.module.scss';
 
 export const GoogleButton = () => {
     return (

@@ -1,0 +1,57 @@
+.mainInfoContainer {
+    width: 100%;
+    padding: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+}
+
+.mainHeader {
+    color: $font-primary-color;
+    font-family: $font-abril_fatface;
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 38px;
+    text-align: center;
+}
+
+.appInfoContainer {
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.appInfo {
+    color: $font-primary-color;
+    font-family: Montserrat, sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 38px;
+    text-align: left;
+}
+
+.mainInfoList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+}
+
+.mainInfoItemText {
+    color: #898f9f;
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    text-align: left;
+}
+
+.mainInfoItemText::before {
+    content: '>';
+    color: $authButton-color;
+    position: absolute;
+    left: -12px;
+}
