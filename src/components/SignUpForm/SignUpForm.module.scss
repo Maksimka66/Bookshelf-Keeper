@@ -13,6 +13,7 @@
 .signUpForm {
     display: flex;
     flex-direction: column;
+    min-width: 280px;
     margin-bottom: 20px;
 }
 
@@ -51,4 +52,27 @@
     line-height: 16px;
     text-align: center;
     color: #ff6b08;
+}
+
+@media (min-width: 768px) {
+    .signUpContainer {
+        padding: 64px 0;
+    }
+
+    .secondSignUpContainer {
+        background-color: $background-color;
+
+        padding: 40px;
+    }
+
+    .signUpForm {
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .signUpContainer {
+        width: 549px;
+        padding: 245px 74px;
+    }
 }

@@ -9,7 +9,7 @@ export const IconGoogle = ({ addStyle }: { addStyle?: string }) => {
             xmlnsXlink='http://www.w3.org/1999/xlink'
             className={addStyle}
         >
-            <rect width='18' height='18' fill='url(#pattern0_24_913)' className={addStyle}/>
+            <rect width='18' height='18' fill='url(#pattern0_24_913)' className={addStyle} />
             <defs>
                 <pattern
                     id='pattern0_24_913'
