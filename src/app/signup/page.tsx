@@ -24,7 +24,7 @@ export default function SignUp() {
     return (
         <main className={cls.container}>
             <Logo />
-            {width < 768 ? (
+            {width && width < 768 ? (
                 <SignUpForm />
             ) : (
                 <div className={cls.desktopContainerSignUp}>
