@@ -24,7 +24,7 @@ export default function SignIn() {
     return (
         <main className={cls.container}>
             <Logo />
-            {width < 1280 ? (
+            {width && width < 1280 ? (
                 <>
                     <SignInForm />
                     <TextFirstPage />
