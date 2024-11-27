@@ -7,6 +7,10 @@ import cls from './page.module.scss';
 import { AppMainInfo } from '@/shared/AppMainInfo/AppMainInfo';
 
 export default function SignUp() {
+    if (typeof window === 'undefined') {
+        return;
+    }
+
     const [width, setWidth] = useState(window.innerWidth);
 
     const handleResize = () => {
