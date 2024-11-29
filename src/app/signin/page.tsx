@@ -7,17 +7,15 @@ import { TextFirstPage } from '@/shared/TextFirstPage/TextFirstPage';
 import cls from './page.module.scss';
 
 export default function SignIn() {
-    if (typeof window === 'undefined') {
-        return;
-    }
-
-    const [width, setWidth] = useState(window.innerWidth);
-
-    const handleResize = () => {
-        setWidth(window.innerWidth);
-    };
+    const [width, setWidth] = useState<null | number>(null);
 
     useEffect(() => {
+        const handleResize = () => {
+            setWidth(window.innerWidth);
+        };
+
+        handleResize();
+
         window.addEventListener('resize', handleResize);
 
         return () => {
@@ -25,10 +23,18 @@ export default function SignIn() {
         };
     }, []);
 
+    if (!width) {
+        return (
+            <main>
+                <p>Загрузка...</p>
+            </main>
+        );
+    }
+
     return (
         <main className={cls.container}>
             <Logo />
-            {width && width < 1280 ? (
+            {width < 1280 ? (
                 <>
                     <SignInForm />
                     <TextFirstPage />

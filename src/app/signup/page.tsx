@@ -3,21 +3,19 @@
 import { useEffect, useState } from 'react';
 import { Logo } from '@/shared/Logo/Logo';
 import { SignUpForm } from '@/components/SignUpForm/SignUpForm';
-import cls from './page.module.scss';
 import { AppMainInfo } from '@/shared/AppMainInfo/AppMainInfo';
+import cls from './page.module.scss';
 
 export default function SignUp() {
-    if (typeof window === 'undefined') {
-        return;
-    }
-
-    const [width, setWidth] = useState(window.innerWidth);
-
-    const handleResize = () => {
-        setWidth(window.innerWidth);
-    };
+    const [width, setWidth] = useState<number | null>(null);
 
     useEffect(() => {
+        const handleResize = () => {
+            setWidth(window.innerWidth);
+        };
+
+        handleResize();
+
         window.addEventListener('resize', handleResize);
 
         return () => {
@@ -25,10 +23,18 @@ export default function SignUp() {
         };
     }, []);
 
+    if (!width) {
+        return (
+            <main>
+                <p>Загрузка...</p>
+            </main>
+        );
+    }
+
     return (
         <main className={cls.container}>
             <Logo />
-            {width && width < 768 ? (
+            {width < 768 ? (
                 <SignUpForm />
             ) : (
                 <div className={cls.desktopContainerSignUp}>
