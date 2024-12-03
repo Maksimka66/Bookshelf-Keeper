@@ -2,6 +2,8 @@ import '@/styles/globals.scss';
 
 import { ReactNode } from 'react';
 import { abrilFatface, montserrat } from '@/styles/fonts';
+import ReduxProvider from '@/store/ReduxProvider';
+
 import cls from './layout.module.scss';
 
 export const metadata = {
@@ -19,7 +21,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <link rel='apple-touch-icon' href='/vercel.svg' type='image/svg+xml' />
             </head>
             <body className={`${montserrat.className} ${abrilFatface.className} ${cls.container}`}>
-                {children}
+                <ReduxProvider>{children}</ReduxProvider>
             </body>
         </html>
     );

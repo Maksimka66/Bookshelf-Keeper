@@ -10,19 +10,7 @@
     text-align: left;
     color: $background-color;
     margin-bottom: 8px;
-}
-
-.inputLabel[for='name'],
-.inputLabel[for='email'] {
-    max-width: 54px;
-}
-
-.inputLabel[for='password'] {
-    width: 80px;
-}
-
-.inputLabel[for='confirmPassword'] {
-    width: 135px;
+    width: fit-content;
 }
 
 .inputLabel::after {

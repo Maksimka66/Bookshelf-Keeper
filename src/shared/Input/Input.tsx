@@ -13,15 +13,15 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const Input = (props: InputProps) => {
-    const { type, placeholder, label, name, error, register } = props;
+    const { type, placeholder, label, error, register, id } = props;
     return (
         <>
-            <label className={styles.inputLabel} htmlFor={name}>
+            <label className={styles.inputLabel} htmlFor={id}>
                 {label}
             </label>
             <input
                 className={styles.inputField}
-                id={name}
+                id={id}
                 type={type}
                 placeholder={placeholder}
                 {...register}
