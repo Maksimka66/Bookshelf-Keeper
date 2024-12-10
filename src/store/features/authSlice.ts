@@ -5,7 +5,7 @@ export interface IAuthState {
 }
 
 const initialState: IAuthState = {
-    email: '@Gfdgdfgfd'
+    email: ''
 };
 
 export const authSlice = createSlice({
