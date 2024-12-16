@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useLoginMutation, useRegisterMutation } from '@/store/features/auth/authApi';
+import { useLoginMutation } from '@/store/features/auth/authApi';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Input } from '@/shared/Input/Input';
 import { GoogleButton } from '@/shared/GoogleButton/GoogleButton';
@@ -15,7 +15,7 @@ export type SignInFormType = {
 };
 
 export const SignInForm = () => {
-    const [loginUser, isLoading] = useLoginMutation();
+    const [loginUser] = useLoginMutation();
 
     const {
         register,
