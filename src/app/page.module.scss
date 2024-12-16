@@ -3,7 +3,16 @@
 
     min-height: 100vh;
     min-width: 100vw;
-    background:
-        linear-gradient(rgba(9, 30, 63, 0.8), rgba(9, 30, 63, 0.8)),
-        url('/img/hero.png') center / cover no-repeat;
+}
+
+.desktopContainerSignIn {
+    width: 100%;
+}
+
+@media (min-width: 1280px) {
+    .desktopContainerSignIn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }

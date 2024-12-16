@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useLoginMutation, useRegisterMutation } from '@/store/features/auth/authApi';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Input } from '@/shared/Input/Input';
 import { GoogleButton } from '@/shared/GoogleButton/GoogleButton';
@@ -14,6 +15,8 @@ export type SignInFormType = {
 };
 
 export const SignInForm = () => {
+    const [loginUser, isLoading] = useLoginMutation();
+
     const {
         register,
         handleSubmit,
@@ -23,7 +26,15 @@ export const SignInForm = () => {
         resolver: yupResolver(ValidateSchemaSignIn)
     });
 
-    const onSubmit: SubmitHandler<SignInFormType> = (data) => console.log(data);
+    const onSubmit: SubmitHandler<SignInFormType> = async ({ email, password }) => {
+        try {
+            const res = await loginUser({ email, password });
+
+            console.log(res);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
         <div className={styles.signInContainer}>

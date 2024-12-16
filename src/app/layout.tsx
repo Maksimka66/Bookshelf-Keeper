@@ -1,8 +1,8 @@
 import '@/styles/globals.scss';
 
 import { ReactNode } from 'react';
-import { abrilFatface, montserrat } from '@/styles/fonts';
 import ReduxProvider from '@/store/ReduxProvider';
+import { abrilFatface, montserrat } from '@/styles/fonts';
 
 import cls from './layout.module.scss';
 
