@@ -1,7 +1,7 @@
 import { useLogoutMutation } from '@/store/features/auth/authApi';
 
 export const Library = () => {
-    const [logoutUser, isLoading] = useLogoutMutation();
+    const [logoutUser] = useLogoutMutation();
 
     const handleLogout = async () => {
         try {
