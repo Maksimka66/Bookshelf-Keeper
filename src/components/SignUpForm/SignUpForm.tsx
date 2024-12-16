@@ -1,11 +1,13 @@
 'use client';
 
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ValidateSchemaSignUp } from '@/components/SignUpForm/ValidateSchemaSignUp';
 import { Input } from '@/shared/Input/Input';
 import { GoogleButton } from '@/shared/GoogleButton/GoogleButton';
+import { useRegisterMutation } from '@/store/features/auth/authApi';
 import styles from './SignUpForm.module.scss';
 
 export type SignUpFormType = {
@@ -16,6 +18,9 @@ export type SignUpFormType = {
 };
 
 export const SignUpForm = () => {
+    const [registerUser, isLoading] = useRegisterMutation();
+    const dispatch = useDispatch();
+
     const {
         register,
         handleSubmit,
@@ -25,7 +30,19 @@ export const SignUpForm = () => {
         resolver: yupResolver(ValidateSchemaSignUp)
     });
 
-    const onSubmit: SubmitHandler<SignUpFormType> = (data) => console.log(data);
+    const onSubmit: SubmitHandler<SignUpFormType> = async ({ email, name, password }) => {
+        try {
+            const res = await registerUser({ email, name, password });
+
+            console.log(res);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    // if (isLoading) {
+    //     return <div>Загрузка...</div>;
+    // }
 
     return (
         <div className={styles.signUpContainer}>
@@ -70,7 +87,7 @@ export const SignUpForm = () => {
                 </form>
                 <div className={styles.loginNav}>
                     <p className={styles.loginNavText}>Already have an account?</p>
-                    <Link className={styles.loginNavLink} href='/signin'>
+                    <Link className={styles.loginNavLink} href='/'>
                         Log in
                     </Link>
                 </div>
