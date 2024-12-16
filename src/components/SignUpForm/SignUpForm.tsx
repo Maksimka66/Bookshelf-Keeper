@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { useDispatch } from 'react-redux';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ValidateSchemaSignUp } from '@/components/SignUpForm/ValidateSchemaSignUp';
@@ -18,8 +17,7 @@ export type SignUpFormType = {
 };
 
 export const SignUpForm = () => {
-    const [registerUser, isLoading] = useRegisterMutation();
-    const dispatch = useDispatch();
+    const [registerUser] = useRegisterMutation();
 
     const {
         register,
