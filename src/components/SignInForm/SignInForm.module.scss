@@ -1,3 +1,9 @@
+.mainSignInContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 .signInContainer {
     width: 100%;
     padding: 32px 20px;
@@ -48,8 +54,13 @@
 }
 
 @media (min-width: 768px) {
+    .mainSignInContainer {
+        width: 100%;
+    }
+
     .signInContainer {
         padding: 64px 0;
+        width: 100%;
     }
 
     .secondSignInContainer {
@@ -64,6 +75,10 @@
 }
 
 @media (min-width: 1280px) {
+    .mainSignInContainer {
+        width: auto;
+    }
+
     .signInContainer {
         width: 549px;
         padding: 245px 74px;

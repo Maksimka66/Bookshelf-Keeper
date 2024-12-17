@@ -14,7 +14,7 @@ import { authReducer } from './features/auth/authSlice';
 import { authApi } from './features/auth/authApi';
 
 const authPersistConfig = {
-    key: 'auth',
+    key: 'bookshelf-auth',
     storage
 };
 

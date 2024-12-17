@@ -1,7 +1,8 @@
+import { Loader } from '@/shared/Loader/Loader';
 import { useLogoutMutation } from '@/store/features/auth/authApi';
 
 export const Library = () => {
-    const [logoutUser] = useLogoutMutation();
+    const [logoutUser, { isLoading }] = useLogoutMutation();
 
     const handleLogout = async () => {
         try {
@@ -10,6 +11,8 @@ export const Library = () => {
             console.log(error);
         }
     };
+
+    if (isLoading) return <Loader />;
 
     return (
         <div>
