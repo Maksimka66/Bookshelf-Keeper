@@ -3,14 +3,13 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { SignInForm } from '@/components/SignInForm/SignInForm';
-import { Logo } from '@/shared/Logo/Logo';
-import { TextFirstPage } from '@/shared/TextFirstPage/TextFirstPage';
 import { selectIsLoggedIn } from '@/store/features/auth/authSelectors';
-import cls from './page.module.scss';
 import { Library } from '@/components/Library/Library';
+import cls from './page.module.scss';
 
 export default function HomePage() {
     const [width, setWidth] = useState<null | number>(null);
+
     const isLoggedIn = useSelector(selectIsLoggedIn);
 
     useEffect(() => {
@@ -37,18 +36,15 @@ export default function HomePage() {
 
     return (
         <main className={cls.container}>
-            <Logo />
             {isLoggedIn ? (
                 <Library />
             ) : width < 1280 ? (
                 <>
                     <SignInForm />
-                    <TextFirstPage />
                 </>
             ) : (
                 <div className={cls.desktopContainerSignIn}>
                     <SignInForm />
-                    <TextFirstPage />
                 </div>
             )}
         </main>

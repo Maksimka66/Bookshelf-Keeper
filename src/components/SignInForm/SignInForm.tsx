@@ -7,6 +7,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Input } from '@/shared/Input/Input';
 import { GoogleButton } from '@/shared/GoogleButton/GoogleButton';
 import { ValidateSchemaSignIn } from '@/components/SignInForm/ValidateSchemaSignIn';
+import { Loader } from '@/shared/Loader/Loader';
+import { Logo } from '@/shared/Logo/Logo';
+import { TextFirstPage } from '@/shared/TextFirstPage/TextFirstPage';
+
 import styles from './SignInForm.module.scss';
 
 export type SignInFormType = {
@@ -15,7 +19,7 @@ export type SignInFormType = {
 };
 
 export const SignInForm = () => {
-    const [loginUser] = useLoginMutation();
+    const [loginUser, { isLoading }] = useLoginMutation();
 
     const {
         register,
@@ -36,37 +40,45 @@ export const SignInForm = () => {
         }
     };
 
+    if (isLoading) return <Loader />;
+
     return (
-        <div className={styles.signInContainer}>
-            <div className={styles.secondSignInContainer}>
-                <GoogleButton />
-                <form className={styles.signInForm} onSubmit={handleSubmit(onSubmit)}>
-                    <Input
-                        type='email'
-                        placeholder='your@email.com'
-                        label='Email'
-                        id='email'
-                        register={register('email')}
-                        error={errors.email?.message}
-                    />
-                    <Input
-                        type='password'
-                        placeholder='Password'
-                        label='Password'
-                        id='password'
-                        register={register('password')}
-                        error={errors.password?.message}
-                    />
-                    <button className={styles.signInSubmitButton} type='submit'>
-                        Login
-                    </button>
-                </form>
-                <div className={styles.registrationNav}>
-                    <Link className={styles.registrationNavLink} href='/signup'>
-                        Register
-                    </Link>
+        <>
+            <div className={styles.mainSignInContainer}>
+                <Logo />
+                <div className={styles.signInContainer}>
+                    <div className={styles.secondSignInContainer}>
+                        <GoogleButton />
+                        <form className={styles.signInForm} onSubmit={handleSubmit(onSubmit)}>
+                            <Input
+                                type='email'
+                                placeholder='your@email.com'
+                                label='Email'
+                                id='email'
+                                register={register('email')}
+                                error={errors.email?.message}
+                            />
+                            <Input
+                                type='password'
+                                placeholder='Password'
+                                label='Password'
+                                id='password'
+                                register={register('password')}
+                                error={errors.password?.message}
+                            />
+                            <button className={styles.signInSubmitButton} type='submit'>
+                                Login
+                            </button>
+                        </form>
+                        <div className={styles.registrationNav}>
+                            <Link className={styles.registrationNavLink} href='/signup'>
+                                Register
+                            </Link>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+            <TextFirstPage />
+        </>
     );
 };

@@ -7,6 +7,8 @@ import { ValidateSchemaSignUp } from '@/components/SignUpForm/ValidateSchemaSign
 import { Input } from '@/shared/Input/Input';
 import { GoogleButton } from '@/shared/GoogleButton/GoogleButton';
 import { useRegisterMutation } from '@/store/features/auth/authApi';
+import { Loader } from '@/shared/Loader/Loader';
+
 import styles from './SignUpForm.module.scss';
 
 export type SignUpFormType = {
@@ -17,7 +19,7 @@ export type SignUpFormType = {
 };
 
 export const SignUpForm = () => {
-    const [registerUser] = useRegisterMutation();
+    const [registerUser, { isLoading }] = useRegisterMutation();
 
     const {
         register,
@@ -38,9 +40,7 @@ export const SignUpForm = () => {
         }
     };
 
-    // if (isLoading) {
-    //     return <div>Загрузка...</div>;
-    // }
+    if (isLoading) return <Loader />;
 
     return (
         <div className={styles.signUpContainer}>
