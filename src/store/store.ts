@@ -1,3 +1,4 @@
+import storage from 'redux-persist/lib/storage';
 import {
     persistStore,
     persistReducer,
@@ -9,7 +10,6 @@ import {
     REGISTER
 } from 'redux-persist';
 import { configureStore } from '@reduxjs/toolkit';
-import storage from 'redux-persist/lib/storage';
 import { authReducer } from './features/auth/authSlice';
 import { authApi } from './features/auth/authApi';
 

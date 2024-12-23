@@ -8,8 +8,8 @@ import { Input } from '@/shared/Input/Input';
 import { GoogleButton } from '@/shared/GoogleButton/GoogleButton';
 import { ValidateSchemaSignIn } from '@/components/SignInForm/ValidateSchemaSignIn';
 import { Loader } from '@/shared/Loader/Loader';
-import { Logo } from '@/shared/Logo/Logo';
 import { TextFirstPage } from '@/shared/TextFirstPage/TextFirstPage';
+import { LibraryHeader } from '@/shared/LibraryHeader/LibraryHeader';
 
 import styles from './SignInForm.module.scss';
 
@@ -45,7 +45,7 @@ export const SignInForm = () => {
     return (
         <>
             <div className={styles.mainSignInContainer}>
-                <Logo />
+                <LibraryHeader />
                 <div className={styles.signInContainer}>
                     <div className={styles.secondSignInContainer}>
                         <GoogleButton />
