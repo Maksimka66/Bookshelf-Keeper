@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Logo } from '@/shared/Logo/Logo';
 import { SignUpForm } from '@/components/SignUpForm/SignUpForm';
 import { AppMainInfo } from '@/shared/AppMainInfo/AppMainInfo';
 import cls from './page.module.scss';
@@ -33,7 +32,6 @@ export default function SignUp() {
 
     return (
         <main className={cls.container}>
-            <Logo />
             {width < 768 ? (
                 <SignUpForm />
             ) : (
