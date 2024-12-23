@@ -49,8 +49,6 @@ export const authSlice = createSlice({
     }
 });
 
-// export const { setEmail } = authSlice.actions;
-
-export const { selectToken } = authSlice.selectors;
+export const { selectUser, selectToken, selectIsLoggedIn } = authSlice.selectors;
 
 export const authReducer = authSlice.reducer;
