@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { SignUpForm } from '@/components/SignUpForm/SignUpForm';
 import { AppMainInfo } from '@/shared/AppMainInfo/AppMainInfo';
+
 import cls from './page.module.scss';
 
 export default function SignUp() {
