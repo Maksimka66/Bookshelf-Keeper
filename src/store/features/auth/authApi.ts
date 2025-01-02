@@ -11,6 +11,8 @@ export const authApi = createApi({
 
             if (token) {
                 headers.set('Authorization', `Bearer ${token}`);
+            } else {
+                headers.delete('Authorization');
             }
 
             return headers;
@@ -44,11 +46,8 @@ export const authApi = createApi({
                 body: data
             })
         }),
-        google: builder.mutation({
-            query: () => ({
-                url: '/auth/google',
-                method: 'GET'
-            })
+        google: builder.query({
+            query: () => '/auth/google'
         })
     })
 });
@@ -58,5 +57,5 @@ export const {
     useLoginMutation,
     useLogoutMutation,
     useRefreshMutation,
-    useGoogleMutation
+    useGoogleQuery
 } = authApi;

@@ -9,28 +9,43 @@ import {
     PURGE,
     REGISTER
 } from 'redux-persist';
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { authReducer } from './features/auth/authSlice';
+import { optionsReducer } from './features/options/optionsSlice';
 import { authApi } from './features/auth/authApi';
+import { userApi } from './features/user/userApi';
+import { booksApi } from './features/books/booksApi';
+// import { booksReducer } from './features/books/booksSlice';
+import { userReducer } from './features/user/userSlice';
 
-const authPersistConfig = {
+const rootPersistConfig = {
     key: 'bookshelf-auth',
-    storage
+    storage,
+    whitelist: ['auth', 'user', 'options']
 };
 
-const persistedReducer = persistReducer(authPersistConfig, authReducer);
+const rootReducer = combineReducers({
+    auth: authReducer,
+    // books: booksReducer,
+    user: userReducer,
+    options: optionsReducer,
+    [authApi.reducerPath]: authApi.reducer,
+    [booksApi.reducerPath]: booksApi.reducer,
+    [userApi.reducerPath]: userApi.reducer
+});
+
+const persistedReducer = persistReducer(rootPersistConfig, rootReducer);
 
 export const store = configureStore({
-    reducer: {
-        auth: persistedReducer,
-        [authApi.reducerPath]: authApi.reducer
-    },
+    reducer: persistedReducer,
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: {
                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
             }
-        }).concat(authApi.middleware)
+        })
+            .concat(authApi.middleware)
+            .concat(userApi.middleware)
 });
 
 export const persistor = persistStore(store);

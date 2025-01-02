@@ -5,13 +5,11 @@ import { IAuthState } from '@/types/authTypes/authTypes';
 const initialState: IAuthState = {
     user: {
         name: '',
-        email: '',
-        currentlyReading: [],
-        finishedReading: [],
-        goingToRead: []
+        email: ''
     },
     token: '',
-    isLoggedIn: false
+    isLoggedIn: false,
+    isRefreshing: false
 };
 
 export const authSlice = createSlice({
@@ -20,35 +18,40 @@ export const authSlice = createSlice({
     selectors: {
         selectUser: (state) => state.user,
         selectToken: (state) => state.token,
-        selectIsLoggedIn: (state) => state.isLoggedIn
+        selectIsLoggedIn: (state) => state.isLoggedIn,
+        selectIsRefreshing: (state) => state.isRefreshing
     },
-    reducers: {},
+    reducers: {
+        clearToken: (state) => {
+            state.token = '';
+        }
+    },
     extraReducers: (builder) => {
         builder.addMatcher(authApi.endpoints.register.matchFulfilled, (state, { payload }) => {
-            console.log(payload);
             state.isLoggedIn = true;
             state.user.name = payload.name;
             state.user.email = payload.email;
         });
 
         builder.addMatcher(authApi.endpoints.login.matchFulfilled, (state, { payload }) => {
-            console.log(payload);
             state.token = payload.accessToken;
             state.isLoggedIn = true;
             state.user.name = payload.userData.name;
             state.user.email = payload.userData.email;
-            state.user.currentlyReading = payload.userData.currentlyReading;
-            state.user.finishedReading = payload.userData.finishedReading;
-            state.user.goingToRead = payload.userData.goingToRead;
         });
 
         builder.addMatcher(authApi.endpoints.logout.matchFulfilled, (state) => {
-            state.token = '';
+            state.user.name = null;
+            state.user.email = null;
+            state.token = null;
             state.isLoggedIn = false;
         });
     }
 });
 
-export const { selectUser, selectToken, selectIsLoggedIn } = authSlice.selectors;
+export const { selectUser, selectToken, selectIsLoggedIn, selectIsRefreshing } =
+    authSlice.selectors;
+
+export const { clearToken } = authSlice.actions;
 
 export const authReducer = authSlice.reducer;

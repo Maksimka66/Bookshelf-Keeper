@@ -1,5 +1,6 @@
 .guideMainContainer {
     padding: 42px 20px;
+    max-width: 280px;
 }
 
 .guideList {
@@ -28,15 +29,14 @@
     text-align: left;
 }
 
-.guideFirstContainer {
+.guideInfoContainer {
     display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 12px;
 }
 
-.guideSecondContainer {
-    @extend .guideFirstContainer;
+.guideStepsContainer {
+    display: flex;
+    flex-direction: column;
     gap: 8px;
 }
 
@@ -46,6 +46,12 @@
     line-height: 20px;
 }
 
+.guideTextContainer {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
 .guideStepsText {
     color: #898f9f;
     font-family: Montserrat, sans-serif;
@@ -53,7 +59,7 @@
     font-weight: 400;
     line-height: 17px;
     text-align: left;
-    width: 190px;
+    width: 167px;
 }
 
 .closeModal {
@@ -68,4 +74,31 @@
     font-weight: 500;
     line-height: 17px;
     text-align: center;
+}
+
+@media (min-width: 768px) {
+    .guideMainContainer {
+        padding: 40px;
+        min-width: 608px;
+    }
+
+    .guideList {
+        gap: 24px;
+        align-items: flex-start;
+    }
+
+    .guideListItem {
+        gap: 16px;
+    }
+
+    .guideStepsText {
+        width: auto;
+    }
+
+    .closeModal {
+        margin-bottom: 0;
+    }
+}
+
+@media (min-width: 1280px) {
 }

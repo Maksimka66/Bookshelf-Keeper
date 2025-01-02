@@ -12,6 +12,8 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+    console.log(montserrat.className);
+
     return (
         <html lang='en'>
             <head>
@@ -19,6 +21,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <title>Wait...</title>
                 <link rel='icon' type='image/svg+xml' href='/vercel.svg' />
                 <link rel='apple-touch-icon' href='/vercel.svg' type='image/svg+xml' />
+
+                <link rel='preconnect' href='https://fonts.googleapis.com' />
+                <link rel='preconnect' href='https://fonts.gstatic.com' />
+                <link
+                    href='https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap'
+                    rel='stylesheet'
+                />
             </head>
             <body className={`${montserrat.className} ${abrilFatface.className} ${cls.container}`}>
                 <ReduxProvider>{children}</ReduxProvider>
