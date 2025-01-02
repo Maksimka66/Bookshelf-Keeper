@@ -47,38 +47,40 @@ export const SignUpForm = () => {
             <div className={styles.secondSignUpContainer}>
                 <GoogleButton />
                 <form className={styles.signUpForm} onSubmit={handleSubmit(onSubmit)}>
-                    <Input
-                        type='text'
-                        placeholder='Enter name'
-                        label='Name'
-                        error={errors.name?.message}
-                        register={register('name')}
-                        id='name'
-                    />
-                    <Input
-                        type='email'
-                        placeholder='your@email.com'
-                        label='Email'
-                        id='email'
-                        register={register('email')}
-                        error={errors.email?.message}
-                    />
-                    <Input
-                        type='password'
-                        placeholder='Enter password'
-                        label='Password'
-                        id='password'
-                        register={register('password')}
-                        error={errors.password?.message}
-                    />
-                    <Input
-                        type='password'
-                        placeholder='Confirm password'
-                        label='Confirm password'
-                        id='confirmPassword'
-                        register={register('confirmPassword')}
-                        error={errors.password?.message}
-                    />
+                    <div className={styles.formSignUpContainer}>
+                        <Input
+                            type='text'
+                            placeholder='Enter name'
+                            label='Name'
+                            error={errors.name?.message}
+                            register={register('name')}
+                            id='name'
+                        />
+                        <Input
+                            type='email'
+                            placeholder='your@email.com'
+                            label='Email'
+                            id='email'
+                            register={register('email')}
+                            error={errors.email?.message}
+                        />
+                        <Input
+                            type='password'
+                            placeholder='Enter password'
+                            label='Password'
+                            id='password'
+                            register={register('password')}
+                            error={errors.password?.message}
+                        />
+                        <Input
+                            type='password'
+                            placeholder='Confirm password'
+                            label='Confirm password'
+                            id='confirmPassword'
+                            register={register('confirmPassword')}
+                            error={errors.password?.message}
+                        />
+                    </div>
                     <button className={styles.signUpSubmitButton} type='submit'>
                         Register
                     </button>

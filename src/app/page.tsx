@@ -3,8 +3,10 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { SignInForm } from '@/components/SignInForm/SignInForm';
-import { selectIsLoggedIn } from '@/store/features/auth/authSelectors';
+import { selectIsLoggedIn } from '@/store/features/auth/authSlice';
 import { Library } from '@/components/Library/Library';
+import { LibraryHeader } from '@/shared/LibraryHeader/LibraryHeader';
+
 import cls from './page.module.scss';
 
 export default function HomePage() {
@@ -35,18 +37,21 @@ export default function HomePage() {
     }
 
     return (
-        <main className={cls.container}>
-            {isLoggedIn ? (
-                <Library />
-            ) : width < 1280 ? (
-                <>
-                    <SignInForm />
-                </>
-            ) : (
-                <div className={cls.desktopContainerSignIn}>
-                    <SignInForm />
-                </div>
-            )}
-        </main>
+        <>
+            {isLoggedIn && <LibraryHeader />}
+            <main className={cls.container}>
+                {isLoggedIn ? (
+                    <Library />
+                ) : width < 1280 ? (
+                    <>
+                        <SignInForm />
+                    </>
+                ) : (
+                    <div className={cls.desktopContainerSignIn}>
+                        <SignInForm />
+                    </div>
+                )}
+            </main>
+        </>
     );
 }

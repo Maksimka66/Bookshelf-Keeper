@@ -1,0 +1,61 @@
+.goingToReadSection {
+    padding: 0 20px;
+}
+
+.goingToReadTitle {
+    color: #242a37;
+    font-family: Montserrat, sans-serif;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 23px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.booksList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: flex-start;
+}
+
+.booksListItem {
+    padding: 20px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background-color: #ffffff;
+}
+
+.booksListContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.booksInfoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+}
+
+.bookInfoContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bookInfoText {
+    color: #242a37;
+    font-family: Montserrat, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+    text-align: left;
+}
+
+.bookInfo {
+    @extend .bookInfoText;
+    color: #898f9f;
+}

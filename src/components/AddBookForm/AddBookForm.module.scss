@@ -1,0 +1,122 @@
+.addBookSection {
+    margin-top: 68px;
+}
+
+.addBookForm {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.addBookFieldsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+}
+
+.addBookLabel {
+    font-weight: 500;
+    color: #898f9f;
+}
+
+.addBookLabel:last-of-type::after {
+    content: none;
+}
+
+.addTitleField {
+    background-color: #ffffff;
+}
+
+.addBookInfoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.addBookInfoField {
+    border: 1px solid #a6abb9;
+    background: #f6f7fb;
+    box-shadow: none;
+}
+
+.addBookInfoField:last-of-type {
+    margin-bottom: 0;
+}
+
+.addBookButton {
+    color: #000000;
+    padding: 12px 70px;
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    border: 1px solid #242a37;
+}
+
+@media (min-width: 768px) {
+    .addBookSection {
+        margin-top: 32px;
+    }
+
+    .addBookFieldsContainer {
+        gap: 24px;
+    }
+
+    .addBookInfoContainer {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 0;
+    }
+
+    .addBookInfoField {
+        min-width: 152px;
+    }
+
+    .authorField {
+        min-width: 336px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .addBookSection {
+        margin-top: 40px;
+    }
+
+    .addBookFieldsContainer {
+        flex-direction: row;
+        gap: 16px;
+        width: auto;
+    }
+
+    .addBookInfoContainer {
+        gap: 16px;
+    }
+
+    .addBookForm {
+        flex-direction: row;
+        align-items: flex-end;
+        gap: 48px;
+    }
+
+    .addTitleField {
+        min-width: 346px;
+    }
+
+    .addBookInfoField {
+        min-width: 134px;
+    }
+
+    .authorField {
+        min-width: 250px;
+    }
+
+    .addBookButton {
+        padding: 12px 76px;
+    }
+}
