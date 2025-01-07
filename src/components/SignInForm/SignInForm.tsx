@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useLoginMutation } from '@/store/features/auth/authApi';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -20,6 +21,7 @@ export type SignInFormType = {
 
 export const SignInForm = () => {
     const [loginUser, { isLoading }] = useLoginMutation();
+    const navigation = useRouter();
 
     const {
         register,
@@ -32,9 +34,9 @@ export const SignInForm = () => {
 
     const onSubmit: SubmitHandler<SignInFormType> = async ({ email, password }) => {
         try {
-            const res = await loginUser({ email, password });
+            await loginUser({ email, password });
 
-            console.log(res);
+            navigation.push('/');
         } catch (error) {
             console.log(error);
         }

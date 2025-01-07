@@ -1,11 +1,8 @@
 export interface IAuthState {
-    user: {
-        name: string | null;
-        email: string | null;
-    };
+    isRegistered: boolean;
     token: string | null;
-    isLoggedIn: boolean;
-    isRefreshing: boolean;
+    refreshToken: string | null;
+    sid: string;
 }
 
 export interface IRegisterRequest {

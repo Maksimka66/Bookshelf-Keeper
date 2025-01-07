@@ -2,17 +2,18 @@
 
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { SignInForm } from '@/components/SignInForm/SignInForm';
-import { selectIsLoggedIn } from '@/store/features/auth/authSlice';
+import { selectIsRegistered } from '@/store/features/auth/authSlice';
 import { Library } from '@/components/Library/Library';
 import { LibraryHeader } from '@/shared/LibraryHeader/LibraryHeader';
+import { LandingPage } from '@/components/LandingPage/LandingPage';
+import { Loader } from '@/shared/Loader/Loader';
 
 import cls from './page.module.scss';
 
 export default function HomePage() {
     const [width, setWidth] = useState<null | number>(null);
 
-    const isLoggedIn = useSelector(selectIsLoggedIn);
+    const isUserRegistered = useSelector(selectIsRegistered);
 
     useEffect(() => {
         const handleResize = () => {
@@ -31,27 +32,21 @@ export default function HomePage() {
     if (!width) {
         return (
             <main>
-                <p>Загрузка...</p>
+                <Loader />
             </main>
         );
     }
 
     return (
-        <>
-            {isLoggedIn && <LibraryHeader />}
-            <main className={cls.container}>
-                {isLoggedIn ? (
+        <main className={cls.container}>
+            {isUserRegistered ? (
+                <>
+                    <LibraryHeader />
                     <Library />
-                ) : width < 1280 ? (
-                    <>
-                        <SignInForm />
-                    </>
-                ) : (
-                    <div className={cls.desktopContainerSignIn}>
-                        <SignInForm />
-                    </div>
-                )}
-            </main>
-        </>
+                </>
+            ) : (
+                <LandingPage />
+            )}
+        </main>
     );
 }

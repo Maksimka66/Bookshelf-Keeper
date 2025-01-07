@@ -26,9 +26,7 @@
 
 .signUpSubmitButton {
     font-family: Montserrat, sans-serif;
-
     background-color: $authButton-color;
-
     padding: 20px 70px;
     color: rgb(255, 255, 255);
     font-size: 16px;
@@ -63,7 +61,7 @@
     color: #ff6b08;
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
     .signUpForm {
         gap: 35px;
     }
@@ -75,7 +73,6 @@
 
     .secondSignUpContainer {
         background-color: $background-color;
-
         padding: 40px;
     }
 
@@ -84,7 +81,7 @@
     }
 }
 
-@media (min-width: 1280px) {
+@media (width >= 1280px) {
     .signUpContainer {
         width: 549px;
         padding: 245px 74px;

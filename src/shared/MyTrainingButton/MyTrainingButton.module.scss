@@ -1,0 +1,18 @@
+.myTrainingButton {
+    background-color: $authButton-color;
+    padding: 11px 38px;
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 64px;
+}
+
+@media (width >= 768px) {
+    .myTrainingButton {
+        padding: 10px 52px;
+    }
+}

@@ -32,9 +32,7 @@
 
 .signInSubmitButton {
     font-family: Montserrat, sans-serif;
-
     background-color: $authButton-color;
-
     padding: 20px 70px;
     color: rgb(255, 255, 255);
     font-size: 16px;
@@ -60,7 +58,7 @@
     text-decoration: underline;
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
     .mainSignInContainer {
         width: 100%;
     }
@@ -72,7 +70,6 @@
 
     .secondSignInContainer {
         background-color: $background-color;
-
         padding: 40px;
     }
 
@@ -82,7 +79,7 @@
     }
 }
 
-@media (min-width: 1280px) {
+@media (width >= 1280px) {
     .mainSignInContainer {
         width: auto;
     }

@@ -1,9 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { SignUpForm } from '@/components/SignUpForm/SignUpForm';
-import { AppMainInfo } from '@/shared/AppMainInfo/AppMainInfo';
 import { Loader } from '@/shared/Loader/Loader';
+import { SignInForm } from '@/components/SignInForm/SignInForm';
 
 import cls from './page.module.scss';
 
@@ -33,13 +32,14 @@ export default function SignUp() {
     }
 
     return (
-        <main className={cls.container}>
-            {width < 768 ? (
-                <SignUpForm />
+        <main>
+            {width < 1280 ? (
+                <>
+                    <SignInForm />
+                </>
             ) : (
-                <div className={cls.desktopContainerSignUp}>
-                    <SignUpForm />
-                    <AppMainInfo />
+                <div className={cls.desktopContainerSignIn}>
+                    <SignInForm />
                 </div>
             )}
         </main>
