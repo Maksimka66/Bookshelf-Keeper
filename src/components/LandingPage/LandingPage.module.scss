@@ -1,0 +1,27 @@
+.routesContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.signInLink {
+    padding: 0 39px;
+    color: #242a37;
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 38px;
+    text-align: center;
+    border: 1px solid #000000;
+}
+
+.signUpLink {
+    @extend .signInLink;
+
+    background-color: $authButton-color;
+
+    color: #ffffff;
+    border: none;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+}

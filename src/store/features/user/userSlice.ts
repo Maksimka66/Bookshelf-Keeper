@@ -14,6 +14,8 @@ export const userSlice = createSlice({
     name: 'user',
     initialState,
     selectors: {
+        selectUserName: (state) => state.name,
+        selectUserEmail: (state) => state.email,
         selectGoingToRead: (state) => state.goingToRead,
         selectCurrentlyReading: (state) => state.currentlyReading,
         selectFinishedReading: (state) => state.finishedReading
@@ -23,6 +25,8 @@ export const userSlice = createSlice({
         builder.addMatcher(userApi.endpoints.userInfo.matchFulfilled, (state, { payload }) => {
             console.log(payload);
 
+            state.name = payload.name;
+            state.email = payload.email;
             state.goingToRead = payload.goingToRead;
             state.currentlyReading = payload.currentlyReading;
             state.finishedReading = payload.finishedReading;
@@ -30,7 +34,12 @@ export const userSlice = createSlice({
     }
 });
 
-export const { selectGoingToRead, selectCurrentlyReading, selectFinishedReading } =
-    userSlice.selectors;
+export const {
+    selectUserName,
+    selectUserEmail,
+    selectGoingToRead,
+    selectCurrentlyReading,
+    selectFinishedReading
+} = userSlice.selectors;
 
 export const userReducer = userSlice.reducer;

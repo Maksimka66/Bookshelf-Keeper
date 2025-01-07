@@ -1,6 +1,5 @@
 .plusBtn {
     background-color: $authButton-color;
-
     padding: 18px;
     border-radius: 50%;
     width: 52px;
@@ -11,7 +10,7 @@
     transform: translateX(-50%);
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
     .plusBtn {
         display: none;
     }

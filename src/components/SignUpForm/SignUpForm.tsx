@@ -10,6 +10,7 @@ import { useRegisterMutation } from '@/store/features/auth/authApi';
 import { Loader } from '@/shared/Loader/Loader';
 
 import styles from './SignUpForm.module.scss';
+import { useRouter } from 'next/navigation';
 
 export type SignUpFormType = {
     name: string;
@@ -20,6 +21,7 @@ export type SignUpFormType = {
 
 export const SignUpForm = () => {
     const [registerUser, { isLoading }] = useRegisterMutation();
+    const navigation = useRouter();
 
     const {
         register,
@@ -32,9 +34,9 @@ export const SignUpForm = () => {
 
     const onSubmit: SubmitHandler<SignUpFormType> = async ({ email, name, password }) => {
         try {
-            const res = await registerUser({ email, name, password });
+            await registerUser({ email, name, password });
 
-            console.log(res);
+            navigation.push('/');
         } catch (error) {
             console.log(error);
         }
@@ -87,7 +89,7 @@ export const SignUpForm = () => {
                 </form>
                 <div className={styles.loginNav}>
                     <p className={styles.loginNavText}>Already have an account?</p>
-                    <Link className={styles.loginNavLink} href='/'>
+                    <Link className={styles.loginNavLink} href='/signin'>
                         Log in
                     </Link>
                 </div>

@@ -15,8 +15,8 @@ import { optionsReducer } from './features/options/optionsSlice';
 import { authApi } from './features/auth/authApi';
 import { userApi } from './features/user/userApi';
 import { booksApi } from './features/books/booksApi';
-// import { booksReducer } from './features/books/booksSlice';
 import { userReducer } from './features/user/userSlice';
+// import { booksReducer } from './features/books/booksSlice';
 
 const rootPersistConfig = {
     key: 'bookshelf-auth',
@@ -45,6 +45,7 @@ export const store = configureStore({
             }
         })
             .concat(authApi.middleware)
+            .concat(booksApi.middleware)
             .concat(userApi.middleware)
 });
 

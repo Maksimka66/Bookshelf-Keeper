@@ -3,55 +3,59 @@ import { authApi } from './authApi';
 import { IAuthState } from '@/types/authTypes/authTypes';
 
 const initialState: IAuthState = {
-    user: {
-        name: '',
-        email: ''
-    },
+    isRegistered: false,
     token: '',
-    isLoggedIn: false,
-    isRefreshing: false
+    refreshToken: '',
+    sid: ''
 };
 
 export const authSlice = createSlice({
     name: 'auth',
     initialState,
     selectors: {
-        selectUser: (state) => state.user,
+        selectIsRegistered: (state) => state.isRegistered,
         selectToken: (state) => state.token,
-        selectIsLoggedIn: (state) => state.isLoggedIn,
-        selectIsRefreshing: (state) => state.isRefreshing
+        selectRefreshedToken: (state) => state.refreshToken,
+        selectSid: (state) => state.sid
     },
     reducers: {
         clearToken: (state) => {
-            state.token = '';
+            state.isRegistered = false;
+            state.token = null;
+            state.refreshToken = null;
+        },
+        savedToken: (state, { payload }) => {
+            state.isRegistered = true;
+            state.token = payload.newAccessToken;
+            state.refreshToken = payload.newRefreshToken;
+            state.sid = payload.newSid;
         }
     },
     extraReducers: (builder) => {
         builder.addMatcher(authApi.endpoints.register.matchFulfilled, (state, { payload }) => {
-            state.isLoggedIn = true;
-            state.user.name = payload.name;
-            state.user.email = payload.email;
+            console.log('My user', payload);
+
+            state.isRegistered = true;
         });
 
         builder.addMatcher(authApi.endpoints.login.matchFulfilled, (state, { payload }) => {
+            state.isRegistered = true;
             state.token = payload.accessToken;
-            state.isLoggedIn = true;
-            state.user.name = payload.userData.name;
-            state.user.email = payload.userData.email;
+            state.refreshToken = payload.refreshToken;
+            state.sid = payload.sid;
         });
 
         builder.addMatcher(authApi.endpoints.logout.matchFulfilled, (state) => {
-            state.user.name = null;
-            state.user.email = null;
+            state.isRegistered = false;
             state.token = null;
-            state.isLoggedIn = false;
+            state.refreshToken = null;
         });
     }
 });
 
-export const { selectUser, selectToken, selectIsLoggedIn, selectIsRefreshing } =
+export const { selectIsRegistered, selectToken, selectRefreshedToken, selectSid } =
     authSlice.selectors;
 
-export const { clearToken } = authSlice.actions;
+export const { clearToken, savedToken } = authSlice.actions;
 
 export const authReducer = authSlice.reducer;

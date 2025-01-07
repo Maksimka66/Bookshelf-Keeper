@@ -1,23 +1,9 @@
-import { RootState } from '@/store/store';
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi } from '@reduxjs/toolkit/query/react';
+import { baseQueryWithReauth } from '@/store/baseQuery';
 
 export const authApi = createApi({
     reducerPath: 'authApi',
-    baseQuery: fetchBaseQuery({
-        baseUrl: 'https://bookread-backend.goit.global',
-        prepareHeaders: (headers: Headers, { getState }) => {
-            const state = getState() as RootState;
-            const token = state.auth.token;
-
-            if (token) {
-                headers.set('Authorization', `Bearer ${token}`);
-            } else {
-                headers.delete('Authorization');
-            }
-
-            return headers;
-        }
-    }),
+    baseQuery: baseQueryWithReauth,
     endpoints: (builder) => ({
         register: builder.mutation({
             query: (data) => ({
@@ -39,23 +25,10 @@ export const authApi = createApi({
                 method: 'POST'
             })
         }),
-        refresh: builder.mutation({
-            query: (data) => ({
-                url: '/auth/refresh',
-                method: 'POST',
-                body: data
-            })
-        }),
         google: builder.query({
             query: () => '/auth/google'
         })
     })
 });
 
-export const {
-    useRegisterMutation,
-    useLoginMutation,
-    useLogoutMutation,
-    useRefreshMutation,
-    useGoogleQuery
-} = authApi;
+export const { useRegisterMutation, useLoginMutation, useLogoutMutation, useGoogleQuery } = authApi;

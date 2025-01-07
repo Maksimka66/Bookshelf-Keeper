@@ -1,9 +1,11 @@
+import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLogoutMutation } from '@/store/features/auth/authApi';
-import { clearToken, selectIsLoggedIn, selectUser } from '@/store/features/auth/authSlice';
+import { clearToken, selectIsRegistered } from '@/store/features/auth/authSlice';
 import { Loader } from '../Loader/Loader';
 import { IconBook } from '../Svg/IconBook';
 import { IconHome } from '../Svg/IconHome';
+import { selectUserName } from '@/store/features/user/userSlice';
 
 import styles from './LibraryHeader.module.scss';
 
@@ -11,8 +13,14 @@ export const LibraryHeader = () => {
     const [logoutUser, { isLoading }] = useLogoutMutation();
     const dispatch = useDispatch();
 
-    const user = useSelector(selectUser);
-    const isLoggedIn = useSelector(selectIsLoggedIn);
+    const userName = useSelector(selectUserName);
+    const isUserRegistered = useSelector(selectIsRegistered);
+
+    const handleLogin = () => {
+        console.log(5);
+
+        dispatch(clearToken());
+    };
 
     const handleLogout = async () => {
         try {
@@ -27,16 +35,16 @@ export const LibraryHeader = () => {
 
     if (isLoading) return <Loader />;
 
-    if (!isLoggedIn) return <p className={styles.logoNoLoginned}>br</p>;
+    if (!isUserRegistered) return <p className={styles.logoNoLoginned}>br</p>;
 
     return (
-        user.name && (
+        isUserRegistered && (
             <header className={styles.appHeader}>
                 <div className={styles.headerContainer}>
                     <p className={styles.logoText}>br</p>
                     <div className={styles.userInfo}>
-                        <p className={styles.userInitials}>{user.name[0]}</p>
-                        <p className={styles.userName}>{user.name}</p>
+                        <p className={styles.userInitials}>{userName[0]}</p>
+                        <p className={styles.userName}>{userName}</p>
                     </div>
                     <div className={styles.headerIconsContainer}>
                         <IconBook />
@@ -44,14 +52,24 @@ export const LibraryHeader = () => {
                             <IconHome />
                         </div>
                         <div className={styles.logoutContainer}>
-                            <p className={styles.userInitialsTelephone}>{user.name[0]}</p>
-                            <button
-                                className={styles.logoutButton}
-                                type='button'
-                                onClick={handleLogout}
-                            >
-                                Logout
-                            </button>
+                            <p className={styles.userInitialsTelephone}>{userName[0]}</p>
+                            {isUserRegistered ? (
+                                <button
+                                    className={styles.logoutButton}
+                                    type='button'
+                                    onClick={handleLogout}
+                                >
+                                    Logout
+                                </button>
+                            ) : (
+                                <Link
+                                    className={styles.loginNavLink}
+                                    href='/'
+                                    onClick={handleLogin}
+                                >
+                                    Log in
+                                </Link>
+                            )}
                         </div>
                     </div>
                 </div>

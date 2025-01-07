@@ -1,21 +1,32 @@
-import { useSelector } from 'react-redux';
 import { IconBook } from '@/shared/Svg/IconBook';
-import { selectGoingToRead } from '@/store/features/user/userSlice';
+import { useUserInfoQuery } from '@/store/features/user/userApi';
+import { IBooksState } from '@/types/booksTypes/booksTypes';
+import { Loader } from '@/shared/Loader/Loader';
+import { MyTrainingButton } from '@/shared/MyTrainingButton/MyTrainingButton';
+import { useSelector } from 'react-redux';
+import { selectToken } from '@/store/features/auth/authSlice';
 
 import styles from './GoingToRead.module.scss';
 
 export const GoingToRead = () => {
-    const goingToReadBooks = useSelector(selectGoingToRead);
+    const token = useSelector(selectToken);
 
-    console.log(goingToReadBooks);
+    const { data, isLoading } = useUserInfoQuery(
+        {},
+        {
+            skip: !token
+        }
+    );
+
+    if (isLoading) return <Loader />;
 
     return (
         <section className={styles.goingToReadSection}>
             <h2 className={styles.goingToReadTitle}>Going to read</h2>
             <ul className={styles.booksList}>
-                {goingToReadBooks &&
-                    goingToReadBooks.length > 0 &&
-                    goingToReadBooks.map((book) => (
+                {data &&
+                    data.goingToRead.length > 0 &&
+                    data.goingToRead.map((book: IBooksState) => (
                         <li key={book._id} className={styles.booksListItem}>
                             <IconBook />
                             <div className={styles.booksListContainer}>
@@ -38,6 +49,7 @@ export const GoingToRead = () => {
                         </li>
                     ))}
             </ul>
+            <MyTrainingButton />
         </section>
     );
 };

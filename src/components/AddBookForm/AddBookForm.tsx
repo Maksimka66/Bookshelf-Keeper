@@ -4,6 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { ValidateSchemaAddBook } from './ValidateSchemaAddBook';
 import { Loader } from '@/shared/Loader/Loader';
 import { Input } from '@/shared/Input/Input';
+import { useLazyUserInfoQuery } from '@/store/features/user/userApi';
 
 import styles from './AddBookForm.module.scss';
 
@@ -16,10 +17,12 @@ export type AddBookFormType = {
 
 export const AddBookForm = () => {
     const [addBook, { isLoading }] = useAddBookMutation();
+    const [trigger, { isLoading: isLazyLoading }] = useLazyUserInfoQuery();
 
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors }
     } = useForm<AddBookFormType>({
         mode: 'onSubmit',
@@ -31,12 +34,16 @@ export const AddBookForm = () => {
 
         try {
             await addBook(data);
+
+            await trigger({});
+
+            reset();
         } catch (error) {
             console.log(error);
         }
     };
 
-    if (isLoading) return <Loader />;
+    if (isLoading || isLazyLoading) return <Loader />;
 
     return (
         <section className={styles.addBookSection}>

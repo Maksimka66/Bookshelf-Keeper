@@ -19,7 +19,8 @@
 .containerFirstPage::after {
     content: '“';
     top: 4px;
-    left: 98px;
+    left: 50%;
+    transform: translateX(-50%);
     position: absolute;
     color: #ff6b08;
     font-family: $font-abril_fatface;
@@ -47,14 +48,13 @@
     text-align: center;
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
     .containerFirstPage {
         padding: 126px 0;
     }
 
     .containerFirstPage::after {
         top: 64px;
-        left: 182px;
         position: absolute;
         color: #ff6b08;
         font-size: 69px;
